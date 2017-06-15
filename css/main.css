@@ -1,0 +1,23 @@
+h1{
+    color: #e84848;
+}
+
+.input{
+    position: relative;
+    color: #ba5e49;
+}
+
+.input input{
+
+    width: 38rem;
+}
+.material-icons {
+    position: absolute;
+    left: 10px;
+    bottom: 20px;
+    color: #646464;
+}
+
+.fondo{
+    background-color: #dbdbdb;
+}
