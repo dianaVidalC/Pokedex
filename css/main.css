@@ -5,6 +5,7 @@ h1{
 .input{
     position: relative;
     color: #ba5e49;
+    padding: 1rem;
 }
 
 .input input{
@@ -18,6 +19,11 @@ h1{
     color: #646464;
 }
 
-.fondo{
+.div-pokemon{
+
+}
+
+figure.fondo{
     background-color: #dbdbdb;
+    padding: 2rem;
 }

@@ -5,21 +5,34 @@
 
 const render = (root)=>{
     root.empty();
-    const wrapper = $('<div class="wrapper"></div>');
 
-    wrapper.append(Header());
-    wrapper.append(busqueda(_=>{render(root)}));
+    const wrapper = $('<div class="wrapper"></div>');
+    if(state.pokemonSelected==null){
+        wrapper.append(Header());
+        wrapper.append(busqueda(_=>{render(root)}));
+
+    }else{
+        wrapper.append(Header());
+        wrapper.append(busqueda(_=>{render(root)}));
+    }
 
     root.append(wrapper);
 }
 
 const state = {
     pokemon:null,
-    status:null
+    pokemonSelected:null
 }
 
 $(_=>{
-    const root= $("#root");
 
-    render(root);
+    getJSON('http://pokeapi.co/api/v2/pokedex/1/',(err,json)=>{
+        if(err){
+            return alert(err.message);
+        }
+        state.pokemon=json;
+        const root= $("#root");
+        render(root);
+    })
+
 })
