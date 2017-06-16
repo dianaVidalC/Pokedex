@@ -11,23 +11,21 @@ const busqueda=(update)=>{
     const input     = $('<input type="text">');
     const lupa      = $('<i class="material-icons small">search</i>');
     const rowGrid   = $('<div class="row"></div>');
-    const pokemonDiv= $('<div class="div-pokemon"</div>');
 
     div.append(lupa);
     div.append(input);
     row.append(div);
     container.append(row);
-    rowGrid.append(pokemonDiv);
     container.append(rowGrid);
 
-    reRender(pokemonDiv,filterByName(state.pokemon,""));
+    reRender(rowGrid,filterByName(state.pokemon,""));
 
   input.on('keyup',_=>{
 
       if(input.val()!=""){
 
             const filtrados = filterByName(state.pokemon,input.val());
-            reRender(pokemonDiv,filtrados,update);
+            reRender(rowGrid,filtrados,update);
             console.log(filtrados);
       }
     });
@@ -38,23 +36,25 @@ const busqueda=(update)=>{
 const listPokemon =(lista,update)=> {
 console.log(lista);
 
-        const figure = $('<figure class="col s12 m4 l2 fondo center-align"></figure>');
-        const img = $(`<img src="http://serebii.net/art/th/${lista.entry_number}.png"/>`);
+        const figure        = $('<figure class="col s12 m4 l2 fondo center-align"></figure>');
+        const img           = $(`<img class="img-responsive" src="http://serebii.net/art/th/${lista.entry_number}.png"/>`);
         const figureCaption = $('<figcaption>'+lista.pokemon_species.name+'</figcaption>');
+        const blanco        = $('<img class="img-responsive" src="assets/img/blanco.png"/>');
 
         figure.append(img);
         figure.append(figureCaption);
+        figure.append(blanco);
 
         return figure;
 }
 
-const reRender= (pokemonDiv,filtrados,update)=>{
+const reRender= (rowGrid,filtrados,update)=>{
 
-    pokemonDiv.empty();
+    rowGrid.empty();
 
     filtrados.forEach((elemento)=>{
-        pokemonDiv.append(listPokemon(elemento,_ =>{
-            reRender(pokemonDiv,filtrados,update)
+        rowGrid.append(listPokemon(elemento,_ =>{
+            reRender(rowGrid,filtrados,update)
         }));
     });
 }
