@@ -20,42 +20,42 @@ const busqueda=(update)=>{
     rowGrid.append(pokemonDiv);
     container.append(rowGrid);
 
-    listPokemon(pokemonDiv);
+    reRender(pokemonDiv,filterByName(state.pokemon,""));
 
   input.on('keyup',_=>{
 
       if(input.val()!=""){
 
-            const filtrados = filterByName(state.pokemon,input.val(),update);
+            const filtrados = filterByName(state.pokemon,input.val());
             reRender(pokemonDiv,filtrados,update);
+            console.log(filtrados);
       }
     });
 
     return container;
 }
 
-const listPokemon =(pokemonDiv)=> {
-
-    state.pokemon.pokemon_entries.forEach((e) => {
+const listPokemon =(lista,update)=> {
+console.log(lista);
 
         const figure = $('<figure class="col s12 m4 l2 fondo center-align"></figure>');
-        const img = $(`<img src="http://serebii.net/art/th/${e.entry_number}.png"/>`);
-        const figureCaption = $(`<figcaption>${e.pokemon_species.name}</figcaption>`);
+        const img = $(`<img src="http://serebii.net/art/th/${lista.entry_number}.png"/>`);
+        const figureCaption = $('<figcaption>'+lista.pokemon_species.name+'</figcaption>');
 
         figure.append(img);
         figure.append(figureCaption);
-        pokemonDiv.append(figure);
-    });
-}
 
+        return figure;
+}
 
 const reRender= (pokemonDiv,filtrados,update)=>{
 
     pokemonDiv.empty();
 
-    filtrados.forEach((e)=>{
-        pokemonDiv.append(listPokemon(e,update));
+    filtrados.forEach((elemento)=>{
+        pokemonDiv.append(listPokemon(elemento,_ =>{
+            reRender(pokemonDiv,filtrados,update)
+        }));
     });
-
 }
 

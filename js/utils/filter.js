@@ -2,15 +2,16 @@
  * Created by LABORATORIA 0017le on 15/06/2017.
  */
 
-const filterByName = (pokemones,inputVal,update) => {
+const filterByName = (pokemones,inputVal) => {
 
-    const valor   = inputVal.toLowerCase();
+    const lista   = pokemones.pokemon_entries.filter((elemento)=>{
+      const nombre= elemento.pokemon_species.name;
 
-    const pokemon = pokemones.pokemon_entries.filter((e)=>{
+            if(nombre.toLowerCase().indexOf(inputVal.toLowerCase())!=-1){
+                console.log(nombre);
+                return nombre;
 
-         return e.pokemon_especies.name.toLowerCase().indexOf(valor)!=-1;
-    })
-
-    console.log(pokemon);
-    return pokemon;
+            }
+    });
+    return lista;
 };
