@@ -8,10 +8,11 @@ const filterByName = (pokemones,inputVal) => {
       const nombre= elemento.pokemon_species.name;
 
             if(nombre.toLowerCase().indexOf(inputVal.toLowerCase())!=-1){
-                console.log(nombre);
+
                 return nombre;
 
             }
     });
+
     return lista;
 };

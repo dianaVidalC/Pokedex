@@ -4,13 +4,14 @@ h1{
 
 .input{
     position: relative;
-    color: #ba5e49;
+    color: #8F8E8E;
     padding: 1rem;
 }
 
 .input input{
 
     width: 38rem;
+    padding-left:2rem;
 }
 .material-icons {
     position: absolute;
@@ -19,11 +20,43 @@ h1{
     color: #646464;
 }
 
-.div-pokemon{
-
-}
-
 figure.fondo{
     background-color: #dbdbdb;
-    padding: 2rem;
+    padding: 1rem;
+}
+
+figure figcaption{
+    
+    background-image: url("../assets/img/blanco.png");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    height: 4rem;
+    width: 12rem;
+    overflow: hidden;
+}
+
+figcaption .float img{
+    width: 1rem;
+    height: 1rem;
+    margin: 0 0.9rem;
+}
+
+.float{
+    display: flex;
+    justify-content: center;
+}
+
+.section{
+    padding: 0 4.5rem;
+}
+
+figure .pokemon{
+    margin:1.2rem 0;
+    height: 8rem;
+}
+
+/*---Modal---*/
+
+h2.titulo{
+    color: #8F8E8E;
 }

@@ -10,10 +10,12 @@ const render = (root)=>{
     if(state.pokemonSelected==null){
         wrapper.append(Header());
         wrapper.append(busqueda(_=>{render(root)}));
+        wrapper.append(Modal());
 
     }else{
         wrapper.append(Header());
         wrapper.append(busqueda(_=>{render(root)}));
+        wrapper.append(Modal());
     }
 
     root.append(wrapper);
