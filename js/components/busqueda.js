@@ -54,14 +54,15 @@ const listPokemon =(lista,update)=> {
         pokeball.on("click",(e)=>{
 
             e.preventDefault();
+
             let clone = figure.clone();
             $('.modal').modal();
-            $('.modal-content').empty().append(contenidoModal(lista.pokemon_species.name, clone));
 
-            $.get(lista.pokemon_species.url,(json)=>{
-                if(!json) { return alert("NO EXISTE DETALLES DEL POKEMON");}
+            $.getJSON(lista.pokemon_species.url,(json)=>{
+
+                if(!json) { return alert("no detalles");}
                 state.pokemonSelected = json;
-                // update();
+                $('.modal-content').append(contenidoModal(lista.pokemon_species.name,clone,state.pokemonSelected));
             });
     })
 
