@@ -6,17 +6,18 @@
 const busqueda=(update)=>{
 
     const container = $('<div class="section"></div>');
-    const row       = $('<div class="row"></div>');
-    const div       = $('<div class="col s12 section input"></div>');
+    const rowInput  = $('<div class="row"></div>');
+    const div       = $('<div class="col s6 buscar"></div>');
     const input     = $('<input type="text">');
     const lupa      = $('<i class="material-icons small">search</i>');
-    const divPokemon= $('<div></div>');
+    const divPokemon= $('<div class="row"></div>');
 
     div.append(lupa);
     div.append(input);
-    row.append(div);
-    row.append(divPokemon);
-    container.append(row);
+    rowInput.append(div);
+    container.append(rowInput);
+    container.append(divPokemon);
+
 
     reRender(divPokemon,filterByName(state.pokemon,""));
 
@@ -34,14 +35,14 @@ const busqueda=(update)=>{
 
 const listPokemon =(lista,update)=> {
 
-        const figure        = $('<figure class="col s12 m4 l2 fondo center-align"></figure>');
+        const figure        = $('<figure class="col s12 m4 l2 card center-align"></figure>');
         const img           = $(`<img class="img-responsive pokemon" src="http://serebii.net/art/th/${lista.entry_number}.png" alt="pokemon"/>`);
         const figureCaption = $('<figcaption></figcaption>');
         const div           = $('<div class="float"></div>');
         const pokeball      = $('<a class="waves-effect waves-light" href="#modal"><img class="img-responsive" src="assets/icon/pokeball_gray.png" alt="pokeball"/></a>');
-        const heart         = $('<img class="img-responsive" src="assets/icon/valentines-heart.png" alt="heart"/>');
-        const data          = $('<img class="img-responsive" src="assets/icon/data.png"alt="data"/>');
-        const span          = $('<span>'+lista.pokemon_species.name+'</span>');
+        const heart         = $('<a class="waves-effect waves-light"><img class="img-responsive" src="assets/icon/valentines-heart.png" alt="heart"/></a>');
+        const data          = $('<a class="waves-effect waves-light"><img class="img-responsive" src="assets/icon/data.png"alt="data"/></a>');
+        const span          = $('<span class="capitalize">'+lista.pokemon_species.name+'</span>');
 
         div.append(pokeball);
         div.append(heart);
@@ -54,13 +55,15 @@ const listPokemon =(lista,update)=> {
         pokeball.on("click",(e)=>{
 
             e.preventDefault();
-
             let clone = figure.clone();
+            $('.modal-content figure.card').toggleClass("imagen-modal");
+
+
             $('.modal').modal();
 
             $.getJSON(lista.pokemon_species.url,(json)=>{
 
-                if(!json) { return alert("no detalles");}
+                if(!json) { return alert("no exiten detalles");}
                 state.pokemonSelected = json;
                 $('.modal-content').append(contenidoModal(lista.pokemon_species.name,clone,state.pokemonSelected));
             });

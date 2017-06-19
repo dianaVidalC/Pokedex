@@ -1,38 +1,49 @@
+@font-face {
+    font-family: 'Flexo';
+    src: url("../assets/font/Flexo/Flexo-Regular.otf");
+}
+*{
+    /*color: #eb6363 ;*/
+    font-family: 'Flexo';
+}
 h1{
     color: #e84848;
 }
+/*---input---*/
 
-.input{
+.buscar {
     position: relative;
     color: #8F8E8E;
-    padding: 1rem;
 }
 
-.input input{
-
-    width: 38rem;
+.buscar input{
     padding-left:2rem;
 }
+
 .material-icons {
     position: absolute;
     left: 10px;
     bottom: 20px;
     color: #646464;
 }
-
-figure.fondo{
-    background-color: #dbdbdb;
-    padding: 1rem;
-}
+/*---section pokemones---*/
 
 figure figcaption{
-    
     background-image: url("../assets/img/blanco.png");
     background-repeat: no-repeat;
-    background-position: center bottom;
-    height: 4rem;
-    width: 12rem;
+    background-position: center 0;
     overflow: hidden;
+}
+
+figure .pokemon{
+    margin:1.2rem 0;
+    height: 8rem;
+}
+
+figure.card{
+    margin:1em 30px;
+    background-color: #dbdbdb;
+    padding: 1rem;
 }
 
 figcaption .float img{
@@ -41,27 +52,41 @@ figcaption .float img{
     margin: 0 0.9rem;
 }
 
+.imagen-modal{
+    width: 100%!important;
+}
+
+.capitalize{
+    text-transform: capitalize;
+}
+
 .float{
     display: flex;
     justify-content: center;
 }
 
 .section{
-    padding: 0 4.5rem;
+    padding-left: 50px;
 }
 
-figure .pokemon{
-    margin:1.2rem 0;
-    height: 8rem;
+@media (max-width:640px) {
+    .section{
+        padding-left: 0;
+    }
 }
-
 /*---Modal---*/
 
 h2.titulo{
-    color: #8F8E8E;
+    color: #3D3D3D;
 }
-
 
 .especificacion{
     background-color: #36A4D3;
+}
+
+.modal{
+    overflow: hidden;
+    width: 75%;
+    max-height: 100%;
+    background-color: #edecec;
 }

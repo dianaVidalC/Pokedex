@@ -24,7 +24,8 @@ const render = (root)=>{
 const state = {
     pokemon:null,
     pokemonSelected:null,
-    pokemonDetalles:null
+    pokemonDetalles:null,
+    pokemonGender:null
 }
 
 $(_=>{
