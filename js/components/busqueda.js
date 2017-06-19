@@ -55,9 +55,8 @@ const listPokemon =(lista,update)=> {
         pokeball.on("click",(e)=>{
 
             e.preventDefault();
-            let clone = figure.clone();
-            $('.modal-content figure.card').toggleClass("imagen-modal");
-
+            //let clone = figure.clone();
+            //$('.modal-content figure.card').toggleClass("imagen-modal");
 
             $('.modal').modal();
 
@@ -65,7 +64,7 @@ const listPokemon =(lista,update)=> {
 
                 if(!json) { return alert("no exiten detalles");}
                 state.pokemonSelected = json;
-                $('.modal-content').append(contenidoModal(lista.pokemon_species.name,clone,state.pokemonSelected));
+                $('.modal-content').append(contenidoModal(lista,state.pokemonSelected));
             });
     })
 

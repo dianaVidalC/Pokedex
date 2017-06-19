@@ -14,22 +14,21 @@ const Modal=()=>{
     return modal;
 }
 
-const contenidoModal =(nombre,imagenClone,detalles)=> {
+const contenidoModal =(lista,detalles)=> {
 
     $('.modal-content').empty();
 
     const container     = $('<div class="container datos"></div>');
     const rowTitulo     = $('<div class="row"></div>');
-    const titulo        = $('<h2 class="col s12 center-align titulo capitalize">'+nombre+'</h2>');
+    const titulo        = $('<h2 class="col s12 center-align titulo capitalize">'+lista.pokemon_species.name+'</h2>');
     const rowDescripcion= $('<div class="row"></div>');
-    const divImagen     = $('<div class="col s4"></div>');
+    const divImagen     = $('<div class="col s4"><img class="img-responsive pokemon" src="http://serebii.net/art/th/'+lista.entry_number+'.png" alt="pokemon"/></div>');
     const descripcion   = $('<div class="col s8"></div>');
     const pokeText      = $('<p>'+detalles.flavor_text_entries[3].flavor_text+'</p>');
     const especificacion= $('<div class="especificacion"></div>');
 
     rowTitulo.append(titulo);
     container.append(rowTitulo);
-    divImagen.append(imagenClone);
     rowDescripcion.append(divImagen);
     descripcion.append(pokeText);
     descripcion.append(especificacion);
@@ -40,7 +39,7 @@ const contenidoModal =(nombre,imagenClone,detalles)=> {
 
         if(!json) { return alert("detalle no encontrado");}
         state.pokemonDetalles = json;
-        $('.especificacion').append(Detalles(state.pokemonDetalles,detalles.id,nombre));
+        $('.especificacion').append(Detalles(state.pokemonDetalles,detalles.id,lista.pokemon_species.name));
     })
 
     return container;
